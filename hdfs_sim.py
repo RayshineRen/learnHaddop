@@ -112,6 +112,16 @@ class HDFSCluster:
         elapsed = time.perf_counter() - start_time
         return b"".join(retrieved), elapsed
 
+    def get_blocks(self, file_path: str) -> List[Tuple[str, bytes]]:
+        blocks = self.namenode.get_file_blocks(file_path)
+        retrieved: List[Tuple[str, bytes]] = []
+        for block in blocks:
+            datanode_ids = self.namenode.get_block_locations(block.block_id)
+            chosen_id = random.choice(datanode_ids)
+            data = self.datanodes[chosen_id].read_block(block.block_id)
+            retrieved.append((block.block_id, data))
+        return retrieved
+
     def reset_cache_metrics(self) -> None:
         for node in self.datanodes.values():
             node.cache_hits = 0
