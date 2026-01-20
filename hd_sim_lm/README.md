@@ -1,40 +1,11 @@
 # hd_sim_lm
 
-本目录包含用 Notebook LM 生成提示词、并由 Codex 逐阶段实现的 Hadoop 生态模拟项目代码。
+本目录包含用 Notebook LM 生成提示词、并由 Codex 逐阶段实现的 Hadoop 生态模拟项目代码。各文件作用如下：
 
-## 快速开始
-
-```bash
-# 运行端到端演示（推荐入门）
-python3 end_to_end_demo.py
-
-# 单独运行各模块测试
-python3 hdfs_sim.py
-python3 mapreduce_sim.py
-python3 yarn_sim.py
-```
-
-## 文件说明
-
-### 核心模拟模块
-- `hdfs_sim.py`：模拟 HDFS 存储层（NameNode/DataNode、Block 切分、副本、缓存等）
-- `mapreduce_sim.py`：模拟 MapReduce 计算层（Mapper/Reducer、Shuffle 的分区/排序/分组、网络传输）
-- `yarn_sim.py`：模拟 YARN 资源管理层（ResourceManager/NodeManager/ApplicationMaster、FIFO/Fair 调度）
-
-### 教学案例
-- `hadoop_learning_case.md`：**完整的端到端 Hadoop 学习案例文档**（重要！）
-  - 案例背景：电商订单日志分析
-  - HDFS 视角：Block 切分、副本策略、数据本地性
-  - MapReduce 实现：详细的 Mapper/Reducer 代码及 Shuffle 解析
-  - YARN 运行视角：资源调度流程
-  - 执行流程串讲：时间线 + 角色视角
-  - 学习总结：常见误解和后续学习铺垫
-
-- `end_to_end_demo.py`：**可运行的完整演示脚本**，整合 HDFS/MapReduce/YARN 三层模拟
-
-### 测试数据
-- `test.txt`：HDFS 模块测试用文本数据
-- `sample_access_logs.txt`：电商访问日志示例数据（用于 PV/UV 统计案例）
+- `hdfs_sim.py`：模拟 HDFS 存储层（NameNode/DataNode、Block 切分、副本、缓存等）。
+- `mapreduce_sim.py`：模拟 MapReduce 计算层（Mapper/Reducer、Shuffle 的分区/排序/分组、网络传输）。
+- `yarn_sim.py`：模拟 YARN 资源管理层（ResourceManager/NodeManager/ApplicationMaster、FIFO/Fair 调度）。
+- `test.txt`：HDFS 测试用文本数据。
 
 以下为 Notebook LM 生成该项目的分阶段提示词（HDFS -> MR -> YARN）：
 
