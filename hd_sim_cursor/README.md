@@ -9,6 +9,18 @@ Hadoop 端到端学习案例 - 电商订单日志分析
 python3 end_to_end_demo.py
 ```
 
+## 目录结构
+
+```
+hd_sim_cursor/
+├── README.md                    # 本文件
+├── hadoop_learning_case.md      # 完整教学案例文档
+├── end_to_end_demo.py           # 可运行演示脚本
+├── sample_access_logs.txt       # 示例数据
+└── deep_dive/                   # 深度剖析专题
+    └── hadoop_deep_dive.md      # MapReduce/Shuffle/YARN/Spark迁移深度解析
+```
+
 ## 文件说明
 
 ### 教学文档
@@ -29,6 +41,13 @@ python3 end_to_end_demo.py
 
 ### 测试数据
 - `sample_access_logs.txt`：电商访问日志示例数据
+
+### 深度剖析专题
+- `deep_dive/hadoop_deep_dive.md`：**进阶必读！**
+  - 单个 Map Task 视角：启动信息、读取 Block、分区决策
+  - Shuffle 深挖：Map 端/Reduce 端、长尾效应、性能瓶颈分析
+  - YARN 调度日志：完整的 Container 分配过程演示
+  - Spark/Flink 迁移：本质变化 vs 保留的设计思想
 
 ## 案例概述
 
