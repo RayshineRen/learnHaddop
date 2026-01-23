@@ -1,5 +1,3 @@
-"""MiniSpark runtime: Driver/Executor wiring and user context."""
-
 import logging
 from typing import List
 
@@ -26,7 +24,7 @@ class Cluster:
 
 
 class MiniSparkContext:
-    """User-facing entrypoint similar to SparkContext."""
+    """User-facing entrypoint similar to SparkContext/SQLContext."""
 
     def __init__(self, num_executors: int = 2) -> None:
         self.cluster = Cluster(num_executors=num_executors)
@@ -34,3 +32,6 @@ class MiniSparkContext:
 
     def parallelize(self, data: list, num_partitions: int = 2):
         return self.driver.parallelize(data, num_partitions=num_partitions)
+
+    def textFile(self, path: str, num_partitions: int = 2):
+        return self.driver.textFile(path, num_partitions=num_partitions)
